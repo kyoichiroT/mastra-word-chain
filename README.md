@@ -1,0 +1,2 @@
+# mastra-word-chain
+mastraでしりとりさせる
