@@ -92,7 +92,7 @@ const getVectorDb = async (): Promise<Embedding[]> => {
   return vectorDb;
 };
 
-// 類似単語取得APIを呼び出す関数
+// 類似単語取得関数
 const getSimilarWords = async (
   word: string
 ): Promise<{ word: string; read: string }[]> => {
@@ -147,7 +147,7 @@ const getSimilarWords = async (
     return { similarity, category: wordDataList[index] }; // 類似度とカテゴリを格納
   });
 
-  // 類似度でソートし、上位5件を取得
+  // 類似度でソートし、上位50件を取得
   similarities.sort((a, b) => b.similarity - a.similarity);
   const top50 = similarities.slice(0, 50);
 
