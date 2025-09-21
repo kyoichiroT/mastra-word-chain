@@ -5,8 +5,13 @@ import { weatherWorkflow } from "./workflows/weather-workflow";
 import { weatherAgent } from "./agents/weather-agent";
 import additionWorkflow from "./workflows/addition-workflow";
 import additionLoopWorkflow from "./workflows/addition-loop-workflow";
-import { wordChainAgent, wordChainEndAgent } from "./agents/word-chain-agent";
+import {
+  ragWordChainAgent,
+  wordChainAgent,
+  wordChainEndAgent,
+} from "./agents/word-chain-agent";
 import wordChainWorkflow from "./workflows/word-chain-workflow";
+import ragWordChainWorkflow from "./workflows/rag-word-chain-workflow";
 
 export const mastra = new Mastra({
   workflows: {
@@ -14,8 +19,14 @@ export const mastra = new Mastra({
     additionWorkflow,
     additionLoopWorkflow,
     wordChainWorkflow,
+    ragWordChainWorkflow,
   },
-  agents: { weatherAgent, wordChainAgent, wordChainEndAgent },
+  agents: {
+    weatherAgent,
+    wordChainAgent,
+    wordChainEndAgent,
+    ragWordChainAgent,
+  },
   storage: new LibSQLStore({
     // stores telemetry, evals, ... into memory storage, if it needs to persist, change to file:../mastra.db
     url: ":memory:",

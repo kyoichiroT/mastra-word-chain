@@ -1,5 +1,10 @@
 import { openai } from "@ai-sdk/openai";
 import { Agent } from "@mastra/core/agent";
+import { getSimilarityWordTool } from "../tools/get-similarity-word";
+
+const tools = {
+  similarityWordTool: await getSimilarityWordTool(),
+};
 
 // しりとりエージェント
 export const wordChainAgent = new Agent({
@@ -27,5 +32,22 @@ export const wordChainEndAgent = new Agent({
     "status": "game over" // 必ず "game over"
 }
 `,
+  model: openai("gpt-5-nano"),
+});
+
+// RAGしりとりエージェント
+export const ragWordChainAgent = new Agent({
+  name: "Word Chain Agent",
+  instructions: `
+    あなたはしりとりをするエージェントです。
+しりとりで使う単語はsimilarityWordToolを必ず使って取得してください。
+similarityWordToolで得られた単語の中からしりとりのルールに従った単語を選んでください。
+出力結果は必ずJSON形式で以下のフォーマットに従ってください。
+{
+  "word": "次の単語",
+  "status": "in the game" // "in the game" または "game over"
+}
+`,
+  tools: tools,
   model: openai("gpt-5-nano"),
 });

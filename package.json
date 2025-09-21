@@ -17,6 +17,7 @@
     "node": ">=20.9.0"
   },
   "dependencies": {
+    "@ai-on-browser/data-analysis-models": "^0.23.0",
     "@ai-sdk/openai": "^1.0.0",
     "@libsql/win32-x64-msvc": "^0.5.22",
     "@mastra/core": "^0.16.3",
@@ -24,6 +25,7 @@
     "@mastra/loggers": "^0.10.11",
     "@mastra/memory": "^0.15.1",
     "@rollup/rollup-win32-x64-msvc": "^4.50.1",
+    "openai": "^5.20.3",
     "zod": "^3.25.76"
   },
   "devDependencies": {
